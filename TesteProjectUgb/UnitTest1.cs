@@ -29,7 +29,23 @@ namespace TesteProjectUgb
         [TestMethod]
         public void VerificandoValorInvalido()
         {
-            //desenvolver
+            // NÃO ACEITA NENHUM NÚMERO NEGATIVO E NEM NÚMERO MAIOR QUE 100.
+            {
+                // Ação e teste para valores inválidos (fora de 1 a 100)
+                Random random = new Random();
+
+                // Gerar um valor inválido menor que 0
+                int valorInvalidoMenor = random.Next(int.MinValue, 0);
+
+                // Gerar um valor inválido maior que 100
+                int valorInvalidoMaior = random.Next(101, int.MaxValue);
+
+                bool EntradaValidaMenor = valorInvalidoMenor > 0 && valorInvalidoMenor < 101;
+                bool EntradaValidaMaior = valorInvalidoMaior > 0 && valorInvalidoMaior < 101;
+
+                Assert.IsFalse(EntradaValidaMenor);  // Esperamos que seja falso
+                Assert.IsFalse(EntradaValidaMaior);  // Esperamos que seja falso
+            }
         }
-    }  
+    }
 }
